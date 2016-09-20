@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title></title>
+<script type="text/javascript" src="geojson.json" defer></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <!--script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script-->
+  <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+  <script type="text/javascript">
+  jQuery(document).ready(function() {
+  	//jQuery.getScript('./geojson.js');
+  	jQuery.getScript('https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js');
+
+  	 L.mapbox.accessToken = 'pk.eyJ1IjoiYmFuZXJqZWVkIiwiYSI6ImNpc3doNzRpYzA1NmQyemtocTh5ZzkxMzYifQ.-w2jfFGPwju-dMjY-3NjMw';
+		var mapGeo = L.mapbox.map('map_geo', 'mapbox.light').setView([37.8, -96], 4);
+		var myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(mapGeo);
+		mapGeo.scrollWheelZoom.disable();
+  });
+ 
+  </script>
+</head>
+<body>
+<div id='map_geo' class='map'> </div>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title></title>
+  <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<div id='map_geo' class='map'> </div>
+<script type="text/javascript" src="geojson.json"></script>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoiYmFuZXJqZWVkIiwiYSI6ImNpc3doNzRpYzA1NmQyemtocTh5ZzkxMzYifQ.-w2jfFGPwju-dMjY-3NjMw';
+
+var mapGeo = L.mapbox.map('map_geo', 'mapbox.light')
+  .setView([37.8, -96], 4);
+
+var myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(mapGeo);
+mapGeo.scrollWheelZoom.disable();
+</script>
+</body>
+</html>
+-->
